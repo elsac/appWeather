@@ -16,7 +16,7 @@ export default class App extends React.Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       position => {
-        this.fetchWeather(position.coords.latitude, position.coords.longitude);
+        this.interval = setInterval(() => this.fetchWeather(position.coords.latitude, position.coords.longitude), 5000);
       },
       error => {
         this.setState({
@@ -24,6 +24,10 @@ export default class App extends React.Component {
         });
       }
     );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   fetchWeather(lat, lon) {
@@ -41,7 +45,7 @@ export default class App extends React.Component {
         });
       });
   }
-  
+
   render() {
     const { isLoading, weatherCondition, temperature, town } = this.state;
     return (

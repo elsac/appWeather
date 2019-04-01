@@ -28,9 +28,6 @@ const Weather = ({ weather, temperature, town }) => {
       </View>
       <View style={styles.bodyContainer}>
         <Text style={styles.title}>{weatherConditions[weather].title}</Text>
-        <Text style={styles.subtitle}>
-          {weatherConditions[weather].subtitle}
-        </Text>
       </View>
       </ImageBackground>
     </View>
@@ -67,17 +64,15 @@ const styles = StyleSheet.create({
     marginBottom: 40
   },
   title_town: {
-    fontSize: 60,
+    fontSize: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
     color: '#fff'
   },
   title: {
-    fontSize: 60,
+    fontSize: 50,
     color: '#fff'
   },
-  subtitle: {
-    fontSize: 24,
-    color: '#fff'
-  }
 });
 
 export default Weather;
